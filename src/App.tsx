@@ -6,6 +6,7 @@ import { GlobalStyle } from "./styles/global";
 
 import { Header } from "./components/Header";
 import NewTransactionModal from "./components/NewTransactionModal";
+import { TransactionsProvider } from "./TransactionsContext";
 
 // configuração de acessibilidade para o componente Modal, colocando o modal como
 // elemento irmão da tag com id="root" no HTML da página
@@ -24,12 +25,12 @@ export function App() {
   }
 
   return (
-    <>
+    <TransactionsProvider>
       <Header onOpenNewTransactionModal={handleOpenNewTransactionModal} />
       <Dashboard />
       <NewTransactionModal isOpen={isNewTransactionModalOpen} onRequestClose={handleCloseNewTransactionModal} />
       <GlobalStyle />
-    </>
+    </TransactionsProvider>
   );
 }
 
