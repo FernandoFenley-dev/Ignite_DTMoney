@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Dashboard from "./components/Dashboard";
+import { useCallback, useState } from "react";
+import Modal from 'react-modal';
 
-function App() {
+import { GlobalStyle } from "./styles/global";
+
+import { Header } from "./components/Header";
+import NewTransactionModal from "./components/NewTransactionModal";
+
+// configuração de acessibilidade para o componente Modal, colocando o modal como
+// elemento irmão da tag com id="root" no HTML da página
+Modal.setAppElement('#root');
+
+export function App() {
+
+  const [isNewTransactionModalOpen, setIsNewTransactionModalOpen] = useState(false);
+
+  const handleOpenNewTransactionModal = useCallback(() => {
+    setIsNewTransactionModalOpen(true);
+  }, []);
+
+  function handleCloseNewTransactionModal() {
+    setIsNewTransactionModalOpen(false);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header onOpenNewTransactionModal={handleOpenNewTransactionModal} />
+      <Dashboard />
+      <NewTransactionModal isOpen={isNewTransactionModalOpen} onRequestClose={handleCloseNewTransactionModal} />
+      <GlobalStyle />
+    </>
   );
 }
 
-export default App;
