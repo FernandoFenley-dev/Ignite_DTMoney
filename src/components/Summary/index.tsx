@@ -2,7 +2,7 @@ import React from 'react';
 import { Container } from './styles';
 
 import incomeImage from '../../assets/income.svg';
-import outcomeImage from '../../assets/outcome.svg';
+import expenseImage from '../../assets/expense.svg';
 import totalImage from '../../assets/total.svg';
 
 const Summary: React.FC = () => {
@@ -18,7 +18,7 @@ const Summary: React.FC = () => {
       <div>
         <header>
           <p>Saídas</p>
-          <img src={outcomeImage} alt="Saídas" />
+          <img src={expenseImage} alt="Saídas" />
         </header>
         <strong>-R$ 500,00</strong>
       </div>

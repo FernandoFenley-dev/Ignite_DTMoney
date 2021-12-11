@@ -26,6 +26,8 @@ export const Container = styled.div`
             line-height: 3rem;
         }
 
+        /* utilizando dessa forma com o '&', evitamos que a classe highlight-background
+        fique como uma classe global */
         &.highlight-background{
             background: var(--green);
             color: #fff;
